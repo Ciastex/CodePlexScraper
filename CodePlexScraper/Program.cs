@@ -37,7 +37,7 @@ namespace CodePlexScraper
                 return;
             }
 
-            var options = new Archiver();
+            var options = new ArchiverOptions();
 
             if (args.Contains("--dont-save-zips"))
                 options.SaveZips = false;
@@ -45,11 +45,11 @@ namespace CodePlexScraper
                 options.SaveMetadata = false;
 
             if (args.Contains("--skip-duplicates"))
-                options.DuplicateResolutionBehavior = Archiver.ResolutionBehavior.Skip;
+                options.DuplicateResolutionBehavior = ArchiverOptions.ResolutionBehavior.Skip;
             else if (args.Contains("--save-duplicates"))
-                options.DuplicateResolutionBehavior = Archiver.ResolutionBehavior.Save;
+                options.DuplicateResolutionBehavior = ArchiverOptions.ResolutionBehavior.Save;
             else if (args.Contains("--overwrite-duplicates"))
-                options.DuplicateResolutionBehavior = Archiver.ResolutionBehavior.Overwrite;
+                options.DuplicateResolutionBehavior = ArchiverOptions.ResolutionBehavior.Overwrite;
 
             if (args.Contains("--quit-on-api-failure"))
                 options.QuitOnApiFailure = true;

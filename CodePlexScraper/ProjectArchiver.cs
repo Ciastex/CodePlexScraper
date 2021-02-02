@@ -12,7 +12,7 @@ namespace CodePlexScraper
     public class ProjectArchiver
     {
         private readonly WebClient _webClient = new();
-        private readonly Archiver _options = new();
+        private readonly ArchiverOptions _options = new();
 
         private string _lastCallResult = string.Empty;
 
@@ -21,7 +21,7 @@ namespace CodePlexScraper
         private StreamWriter _exceptionLogWriter = new("exceptions.log") {AutoFlush = true};
         private StreamWriter _lastIndexWriter = new("last_index.txt") {AutoFlush = true};
 
-        public ProjectArchiver(Archiver options = null)
+        public ProjectArchiver(ArchiverOptions options = null)
         {
             if (options != null)
             {
@@ -119,7 +119,7 @@ namespace CodePlexScraper
             if (File.Exists(targetFilePath))
             {
                 Console.Write($"'{project.Name}' exists. ");
-                if (_options.DuplicateResolutionBehavior == Archiver.ResolutionBehavior.Save)
+                if (_options.DuplicateResolutionBehavior == ArchiverOptions.ResolutionBehavior.Save)
                 {
                     var i = 0;
                     var name = string.Empty;
@@ -132,7 +132,7 @@ namespace CodePlexScraper
 
                     Console.WriteLine($"Saved to '{name}' instead.");
                 }
-                else if (_options.DuplicateResolutionBehavior == Archiver.ResolutionBehavior.Skip)
+                else if (_options.DuplicateResolutionBehavior == ArchiverOptions.ResolutionBehavior.Skip)
                 {
                     Console.WriteLine("Skipped.");
                     return;

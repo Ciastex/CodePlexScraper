@@ -1,6 +1,6 @@
 namespace CodePlexScraper
 {
-    public class Archiver
+    public class ArchiverOptions
     {
         public enum ResolutionBehavior
         {
